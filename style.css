@@ -1,0 +1,202 @@
+:root {
+            --dark-bg: #02020a;
+            --accent: #2ecc71;
+            --accent-glow: rgba(46, 204, 113, 0.3);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: var(--dark-bg);
+            color: white;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* --- BACKGROUND LAYER --- */
+        .bg-canvas {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            /* Background image (11.jpg) layered under the existing gradient.
+               Place 11.jpg next to this HTML file (same folder) or adjust the path as needed. */
+            background: 
+                url("images/11.jpg") center/cover no-repeat,
+                radial-gradient(circle at 50% 50%, #0a1a12 0%, #02020a 100%);
+        }
+
+        /* Animated Green Orbs */
+        .orb {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            background: var(--accent);
+            filter: blur(130px);
+            border-radius: 50%;
+            opacity: 0.12;
+            animation: float 18s infinite alternate ease-in-out;
+        }
+
+        @keyframes float {
+            0% { transform: translate(-15%, -15%); }
+            100% { transform: translate(15%, 15%); }
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 60px;
+            display: flex;
+            justify-content: center;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 0.18em;
+            font-weight: 700;
+            text-shadow: 0 0 18px rgba(46, 204, 113, 0.35);
+            background: linear-gradient(120deg, #fff, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- CENTRAL FORM CARD --- */
+        .main-card {
+            background: var(--glass);
+            backdrop-filter: blur(25px);
+            padding: 50px 40px;
+            border-radius: 40px;
+            border: 1px solid var(--border);
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            box-shadow: 0 40px 100px rgba(0,0,0,0.5);
+            animation: cardAppear 1s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 30px;
+            line-height: 1;
+            background: linear-gradient(to bottom, #fff, #888);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- INPUTS --- */
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: rgba(255,255,255,0.5);
+            margin-left: 5px;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        input {
+            width: 100%;
+            padding: 18px 22px;
+            background: rgba(0,0,0,0.4);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            color: white;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        input:focus {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 20px;
+            border-radius: 18px;
+            border: none;
+            background: white;
+            color: black;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        .btn-submit:hover:not(:disabled) {
+            background: var(--accent);
+            color: white;
+            transform: scale(1.02);
+            box-shadow: 0 15px 30px var(--accent-glow);
+        }
+
+        .btn-submit:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* --- SOCIAL DOCK --- */
+        .social-dock {
+            position: fixed;
+            bottom: 40px;
+            display: flex;
+            gap: 20px;
+            background: rgba(255,255,255,0.05);
+            padding: 12px 25px;
+            border-radius: 100px;
+            border: 1px solid var(--border);
+            backdrop-filter: blur(10px);
+        }
+
+        .social-icon {
+            color: rgba(255,255,255,0.6);
+            font-size: 1.2rem;
+            transition: 0.3s;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 600px) {
+            nav { padding: 20px; }
+            .main-card { padding: 40px 25px; }
+            h1 { font-size: 2.2rem; }
+        }
