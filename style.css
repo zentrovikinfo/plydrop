@@ -32,7 +32,7 @@
             /* Background image (11.jpg) layered under the existing gradient.
                Place 11.jpg next to this HTML file (same folder) or adjust the path as needed. */
             background: 
-                url("images/11.jpg") center/cover no-repeat,
+                url("11.jpg") center/cover no-repeat,
                 radial-gradient(circle at 50% 50%, #0a1a12 0%, #02020a 100%);
         }
 
@@ -199,4 +199,5 @@
             nav { padding: 20px; }
             .main-card { padding: 40px 25px; }
             h1 { font-size: 2.2rem; }
+
         }
